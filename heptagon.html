@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotating 3D Wireframe Heptagon</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Scene setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Create a heptagon geometry
+        const heptagonGeometry = new THREE.Geometry();
+        const radius = 1;
+        const numSides = 7;
+        const angleStep = (Math.PI * 2) / numSides;
+
+        for (let i = 0; i < numSides; i++) {
+            const angle = i * angleStep;
+            const x = radius * Math.cos(angle);
+            const y = radius * Math.sin(angle);
+            heptagonGeometry.vertices.push(new THREE.Vector3(x, y, 0));
+        }
+
+        for (let i = 0; i < numSides; i++) {
+            heptagonGeometry.faces.push(new THREE.Face3(i, (i + 1) % numSides, (i + 2) % numSides));
+        }
+
+        // Create a wireframe material
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+
+        // Create a mesh and add it to the scene
+        const heptagonMesh = new THREE.Mesh(heptagonGeometry, material);
+        scene.add(heptagonMesh);
+
+        // Position the camera
+        camera.position.z = 5;
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Rotate the heptagon
+            heptagonMesh.rotation.y += 0.01;
+
+            // Render the scene
+            renderer.render(scene, camera);
+        }
+
+        // Start the animation
+        animate();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
