@@ -9,7 +9,7 @@ const sun = {
 };
 
 const earth = {
-    x: canvas.width / 2 + 150,
+    x: canvas.width / 2 + 75,
     y: canvas.height / 2,
     radius: 15,
     color: 'blue',
@@ -18,7 +18,7 @@ const earth = {
 };
 
 const moon = {
-    x: earth.x + 50,
+    x: earth.x + 20,
     y: earth.y,
     radius: 5,
     color: 'gray',
