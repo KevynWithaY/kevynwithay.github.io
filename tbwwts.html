@@ -100,16 +100,30 @@
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
+        .controls-panel { display: flex; justify-content: center; align-items: flex-start; gap: 40px; margin-top: 20px; }
+
+        .audio-controls, .font-controls-panel { gap: 10px; display: flex; flex-direction: column; align-items: center; /* centers label + buttons */ }
+
         .font-controls-label {
             text-align: center;
             font-size: 0.9em;
             color: #b8b8b8;
             margin-bottom: 2px;
-            margin-top:2px;
+            margin-top:0px;
             font-style: italic;
         }
 
-        .font-controls {
+        .font-controls-panel {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: 0px;
+            flex-wrap: wrap;
+        }
+
+        /* .font-controls {
             text-align: center;
             margin-bottom: 20px;
             margin-left: 0px;
@@ -119,7 +133,9 @@
             justify-content: center;
             gap: 20px;
             align-items: center;
-        }
+        } */
+
+        .font-buttons-row { display: flex; gap: 20px; align-items: center; }
 
         .font-btn {
             width: 50px;
@@ -178,6 +194,44 @@
             transform: scale(0.95);
         }
 
+        .audio-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .audio-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .audio-btn:active {
+            transform: scale(0.95);
+        }
+
+        .audio-btn.playing {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
         @media (max-width: 768px) {
             .font-btn {
                 width: 45px;
@@ -189,6 +243,17 @@
                 height: 45px;
                 font-size: 14px;
                 margin-left: 30px;
+            }
+            .audio-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+            .controls-panel {
+                gap: 20px;
+            }
+            .controls-divider {
+                height: 25px;
             }
         }
 
@@ -226,11 +291,13 @@
             <img src="banner_the-boy-who-woke-the-stars.jpg" alt="Story Cover Image">
         </div>
 
-        <div class="font-controls-label">Adjust Text Size</div>
-        <div class="font-controls">
-            <button class="font-btn" id="font-decrease" aria-label="Decrease font size">−</button>
-            <button class="font-btn" id="font-increase" aria-label="Increase font size">+</button>
-            <button class="reset-btn" id="font-reset" aria-label="Reset font size">↺</button>
+        <div class="controls-panel">
+            <div class="audio-controls">
+                <div class="audio-controls-label">Listen to Story</div>
+                <button class="audio-btn" id="audio-toggle" aria-label="Play/Pause audio">▶</button>
+            </div>
+            <div class="controls-divider"></div>
+            <div class="font-controls-panel"> <div class="font-controls-label">Adjust Text Size</div> <div class="font-buttons-row"> <button class="font-btn" id="font-decrease">−</button> <button class="font-btn" id="font-increase">+</button> <button class="reset-btn" id="font-reset">↺</button> </div> </div>
         </div>
 
         <p>A very long time ago, before the sky learned how to shimmer and sparkle, the nights were whole and unbroken.
@@ -517,12 +584,7 @@
 
         <div class="final-line">And that is how a boy woke the stars. ✨🖖</div>
 
-        <div class="font-controls">
-    <label class="font-controls-label">Font Size:</label>
-    <button id="font-decrease" class="font-btn">-</button>
-    <button id="font-increase" class="font-btn">+</button>
-    <button id="font-reset" class="reset-btn">Reset</button>
-</div>
+        
 
     </div>
 
@@ -532,6 +594,7 @@
         const fontIncreaseBtn = document.getElementById('font-increase');
         const fontDecreaseBtn = document.getElementById('font-decrease');
         const fontResetBtn = document.getElementById('font-reset');
+        const audioToggleBtn = document.getElementById('audio-toggle');
         const container = document.querySelector('.container');
         
         // Get all text elements that should be affected by font size changes
@@ -588,6 +651,31 @@
             updateFontSize();
             // Clear the saved preference
             localStorage.removeItem('storyFontSize');
+        });
+        
+        // Audio functionality
+        let audio = new Audio('tbwwts.mp3');
+        let isPlaying = false;
+        
+        audioToggleBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                audioToggleBtn.textContent = '▶';
+                audioToggleBtn.classList.remove('playing');
+                isPlaying = false;
+            } else {
+                audio.play();
+                audioToggleBtn.textContent = '❚❚';
+                audioToggleBtn.classList.add('playing');
+                isPlaying = true;
+            }
+        });
+        
+        // Handle audio end
+        audio.addEventListener('ended', () => {
+            audioToggleBtn.textContent = '▶';
+            audioToggleBtn.classList.remove('playing');
+            isPlaying = false;
         });
         
         // Add keyboard support
