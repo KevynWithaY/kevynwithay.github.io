@@ -17,9 +17,17 @@
             min-height: 100vh;
         }
 
-        .small-font { font-size: 0.9em; }
-        .medium-font { font-size: 1.1em; }
-        .large-font { font-size: 1.3em; }
+        .small-font {
+            font-size: 0.9em;
+        }
+
+        .medium-font {
+            font-size: 1.2em;
+        }
+
+        .large-font {
+            font-size: 1.5em;
+        }
 
         .container {
             background: rgba(255, 255, 255, 0.05);
@@ -100,16 +108,38 @@
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        .controls-panel { display: flex; justify-content: center; align-items: flex-start; gap: 40px; margin-top: 20px; }
+        .controls-panel {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 40px;
+            margin-top: 20px;
+        }
 
-        .audio-controls, .font-controls-panel { gap: 10px; display: flex; flex-direction: column; align-items: center; /* centers label + buttons */ }
+        .audio-controls-label {
+            text-align: center;
+            font-size: 0.9em;
+            color: #b8b8b8;
+            margin-bottom: 2px;
+            margin-top: 0px;
+            font-style: italic;
+        }
+
+        .audio-controls,
+        .font-controls-panel {
+            gap: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* centers label + buttons */
+        }
 
         .font-controls-label {
             text-align: center;
             font-size: 0.9em;
             color: #b8b8b8;
             margin-bottom: 2px;
-            margin-top:0px;
+            margin-top: 0px;
             font-style: italic;
         }
 
@@ -135,7 +165,11 @@
             align-items: center;
         } */
 
-        .font-buttons-row { display: flex; gap: 20px; align-items: center; }
+        .font-buttons-row {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
 
         .font-btn {
             width: 50px;
@@ -227,9 +261,17 @@
         }
 
         @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.6; }
-            100% { opacity: 1; }
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.6;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
 
         @media (max-width: 768px) {
@@ -238,20 +280,24 @@
                 height: 45px;
                 font-size: 20px;
             }
+
             .reset-btn {
                 width: 45px;
                 height: 45px;
                 font-size: 14px;
                 margin-left: 30px;
             }
+
             .audio-btn {
                 width: 45px;
                 height: 45px;
                 font-size: 18px;
             }
+
             .controls-panel {
                 gap: 20px;
             }
+
             .controls-divider {
                 height: 25px;
             }
@@ -293,18 +339,24 @@
 
         <div class="controls-panel">
             <div class="audio-controls">
-                <div class="audio-controls-label">Listen to Story</div>
+                <div class="audio-controls-label">Listen</div>
                 <button class="audio-btn" id="audio-toggle" aria-label="Play/Pause audio">▶</button>
             </div>
             <div class="controls-divider"></div>
-            <div class="font-controls-panel"> <div class="font-controls-label">Adjust Text Size</div> <div class="font-buttons-row"> <button class="font-btn" id="font-decrease">−</button> <button class="font-btn" id="font-increase">+</button> <button class="reset-btn" id="font-reset">↺</button> </div> </div>
+            <div class="font-controls-panel">
+                <div class="font-controls-label">Adjust Text Size</div>
+                <div class="font-buttons-row"> 
+                    <button class="font-btn" id="font-small">S</button> 
+                    <button class="font-btn" id="font-medium">M</button> 
+                    <button class="font-btn" id="font-large">L</button> </div>
+            </div>
         </div>
 
         <p>A very long time ago, before the sky learned how to shimmer and sparkle, the nights were whole and unbroken.
         </p>
 
         <p>Each night, after the Sun had set beyond the horizon, darkness covered the Earth like a deep ocean. The only
-            source of light in the sky was the Moon. It drifted overhead;pale, patient, and alone.</p>
+            source of light in the sky was the Moon. It drifted overhead – pale, patient, and alone.</p>
 
         <p>The Moon gave what light it could, pouring silver across rooftops, rivers, and sleeping faces. It never
             failed its post.</p>
@@ -313,8 +365,7 @@
             thin and narrow, like a single thought in a stubborn mind. When the Moon turned its face away, or stayed
             below the horizon, the sky gave only darkness.</p>
 
-        <p>The world did not know these details. The people simply said, "See? We have moonlight. It is not much, but it
-            is enough." They had never known anything else.</p>
+        <p>The world did not know these details. The people simply said, "See? We have moonlight. It is good enough for everyone." They had never known anything else.</p>
 
         <p>And so, the night sky remained singular.</p>
 
@@ -493,8 +544,8 @@
 
         <div class="special-line">
             <p style="margin-bottom: 0px;"><em>
-                “I stopped hiding.”
-            </em></p>
+                    “I stopped hiding.”
+                </em></p>
         </div>
 
 
@@ -584,79 +635,124 @@
 
         <div class="final-line">And that is how a boy woke the stars. ✨🖖</div>
 
-        
+
 
     </div>
 
     <script>
-        let currentFontSize = 1.1; // Base font size for paragraphs
-        
-        const fontIncreaseBtn = document.getElementById('font-increase');
-        const fontDecreaseBtn = document.getElementById('font-decrease');
-        const fontResetBtn = document.getElementById('font-reset');
+        //let currentFontSize = 1.1; // Base font size for paragraphs
+
+        const fontSmallBtn = document.getElementById('font-small');
+        const fontMediumBtn = document.getElementById('font-medium');
+        const fontLargeBtn = document.getElementById('font-large');
         const audioToggleBtn = document.getElementById('audio-toggle');
         const container = document.querySelector('.container');
-        
+
         // Get all text elements that should be affected by font size changes
         function getTextElements() {
             return container.querySelectorAll('p, .special-line, .final-line');
         }
-        
-        function updateFontSize() {
-            console.log("updateFontSize - " + currentFontSize);
-            const textElements = getTextElements();
-            textElements.forEach(element => {
-                element.classList.remove('small-font', 'medium-font', 'large-font');
-                if (currentFontSize < 1.1) {
-                    element.classList.add('small-font');
-                    console.log("go small");
-                } else if (currentFontSize > 1.1) {
-                    element.classList.add('large-font');
-                    console.log("go large");
-                } else {
-                    element.classList.add('medium-font');
-                    console.log("go medium");
-                }
-            });
 
-            // Save preference to localStorage
-            localStorage.setItem('storyFontSize', currentFontSize);
-        }
-        
+        // function updateFontSize() {
+        //     console.log("updateFontSize - " + currentFontSize);
+        //     const textElements = getTextElements();
+        //     textElements.forEach(element => {
+        //         element.classList.remove('small-font', 'medium-font', 'large-font');
+        //         if (currentFontSize < 1.1) {
+        //             element.classList.add('small-font');
+        //             console.log("go small");
+        //         } else if (currentFontSize > 1.1) {
+        //             element.classList.add('large-font');
+        //             console.log("go large");
+        //         } else {
+        //             element.classList.add('medium-font');
+        //             console.log("go medium");
+        //         }
+        //     });
+
+        //     // Save preference to localStorage
+        //     localStorage.setItem('storyFontSize', currentFontSize);
+        // }
+
         // Load saved font size preference
         const savedFontSize = localStorage.getItem('storyFontSize');
         if (savedFontSize) {
-            currentFontSize = parseFloat(savedFontSize);
-            updateFontSize();
+            //currentFontSize = parseFloat(savedFontSize);
+            //updateFontSize();
+            if (savedFontSize === 'S') {
+                goSmall();
+            } else if (savedFontSize === 'M') {
+                goMedium();
+            } else if (savedFontSize === 'L') {
+                goLarge();
+            }
         }
-        
-        fontIncreaseBtn.addEventListener('click', () => {
-            console.log("increase button - " + currentFontSize);
-            if (currentFontSize < 2.0) { // Maximum font size limit
-                currentFontSize += 0.1;
-                updateFontSize();
-            }
+
+        // fontIncreaseBtn.addEventListener('click', () => {
+        //     console.log("increase button - " + currentFontSize);
+        //     if (currentFontSize < 2.0) { // Maximum font size limit
+        //         currentFontSize += 0.1;
+        //         updateFontSize();
+        //     }
+        // });
+
+        // fontDecreaseBtn.addEventListener('click', () => {
+        //     console.log("decrease button - " + currentFontSize);
+        //     if (currentFontSize > 0.8) { // Minimum font size limit
+        //         currentFontSize -= 0.1;
+        //         updateFontSize();
+        //     }
+        // });
+
+        function goSmall() {
+            const textElements = getTextElements();
+            textElements.forEach(element => {
+                element.classList.remove('small-font', 'medium-font', 'large-font');
+                element.classList.add('small-font');
+            });
+
+            // Save preference to localStorage
+            localStorage.setItem('storyFontSize', 'S');
+        }
+
+        function goMedium() {
+            const textElements = getTextElements();
+            textElements.forEach(element => {
+                element.classList.remove('small-font', 'medium-font', 'large-font');
+                element.classList.add('medium-font');
+            });
+
+            // Save preference to localStorage
+            localStorage.setItem('storyFontSize', 'M');
+        }
+
+        function goLarge() {
+            const textElements = getTextElements();
+            textElements.forEach(element => {
+                element.classList.remove('small-font', 'medium-font', 'large-font');
+                element.classList.add('large-font');
+            });
+
+            // Save preference to localStorage
+            localStorage.setItem('storyFontSize', 'L');
+        }
+
+        fontSmallBtn.addEventListener('click', () => {
+            goSmall();
         });
-        
-        fontDecreaseBtn.addEventListener('click', () => {
-            console.log("decrease button - " + currentFontSize);
-            if (currentFontSize > 0.8) { // Minimum font size limit
-                currentFontSize -= 0.1;
-                updateFontSize();
-            }
+
+        fontMediumBtn.addEventListener('click', () => {
+            goMedium();
         });
-        
-        fontResetBtn.addEventListener('click', () => {
-            currentFontSize = 1.1; // Reset to default font size
-            updateFontSize();
-            // Clear the saved preference
-            localStorage.removeItem('storyFontSize');
+
+        fontLargeBtn.addEventListener('click', () => {
+            goLarge();
         });
-        
+
         // Audio functionality
         let audio = new Audio('tbwwts.mp3');
         let isPlaying = false;
-        
+
         audioToggleBtn.addEventListener('click', () => {
             if (isPlaying) {
                 audio.pause();
@@ -670,26 +766,26 @@
                 isPlaying = true;
             }
         });
-        
+
         // Handle audio end
         audio.addEventListener('ended', () => {
             audioToggleBtn.textContent = '▶';
             audioToggleBtn.classList.remove('playing');
             isPlaying = false;
         });
-        
-        // Add keyboard support
-        document.addEventListener('keydown', (e) => {
-            if (e.ctrlKey || e.metaKey) {
-                if (e.key === '+' || e.key === '=') {
-                    e.preventDefault();
-                    fontIncreaseBtn.click();
-                } else if (e.key === '-') {
-                    e.preventDefault();
-                    fontDecreaseBtn.click();
-                }
-            }
-        });
+
+        // // Add keyboard support
+        // document.addEventListener('keydown', (e) => {
+        //     if (e.ctrlKey || e.metaKey) {
+        //         if (e.key === '+' || e.key === '=') {
+        //             e.preventDefault();
+        //             fontIncreaseBtn.click();
+        //         } else if (e.key === '-') {
+        //             e.preventDefault();
+        //             fontDecreaseBtn.click();
+        //         }
+        //     }
+        // });
     </script>
 </body>
 
