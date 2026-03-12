@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Boy Who Woke the Stars</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+            color: #e8e8e8;
+            min-height: 100vh;
+        }
+
+        .small-font {
+            font-size: 0.9em;
+        }
+
+        .medium-font {
+            font-size: 1.2em;
+        }
+
+        .large-font {
+            font-size: 1.5em;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .author {
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #b8b8b8;
+            font-size: 1.1em;
+        }
+
+        .dedication {
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 40px;
+            color: #b8b8b8;
+            font-size: 1.1em;
+        }
+
+        .cover-image {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .cover-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        p {
+            margin-bottom: 1.2em;
+            text-align: justify;
+            font-size: 1.1em;
+        }
+
+        .final-line {
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-top: 40px;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 0.8em;
+            color: #888888;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-style: italic;
+        }
+
+        .special-line {
+            text-align: center;
+            font-weight: bold;
+            font-style: italic;
+            text-decoration: italic;
+            font-size: 1.3em;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .controls-panel {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .audio-controls-label {
+            text-align: center;
+            font-size: 0.9em;
+            color: #b8b8b8;
+            margin-bottom: 2px;
+            margin-top: 0px;
+            font-style: italic;
+        }
+
+        .audio-controls,
+        .font-controls-panel {
+            gap: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* centers label + buttons */
+        }
+
+        .font-controls-label {
+            text-align: center;
+            font-size: 0.9em;
+            color: #b8b8b8;
+            margin-bottom: 2px;
+            margin-top: 0px;
+            font-style: italic;
+        }
+
+        .font-controls-panel {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: 0px;
+            flex-wrap: wrap;
+        }
+
+
+        .font-buttons-row {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .font-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .reset-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            margin-left: 40px;
+        }
+
+        .font-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .font-btn:active {
+            transform: scale(0.95);
+        }
+
+        .reset-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .reset-btn:active {
+            transform: scale(0.95);
+        }
+
+        .audio-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .audio-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .audio-btn:active {
+            transform: scale(0.95);
+        }
+
+        .audio-btn.playing {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.6;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .font-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+
+            .reset-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 14px;
+                margin-left: 30px;
+            }
+
+            .audio-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+
+            .controls-panel {
+                gap: 20px;
+            }
+
+            .controls-divider {
+                height: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>The Child Who Woke the Stars</h1>
+
+        <div class="author">by Kevyn Patrick Malpass</div>
+
+        <div class="dedication">
+            Dedicated to my Mom and Dad, who taught me to be myself, no matter what others thought of me.
+        </div>
+
+        <div class="cover-image">
+            <img src="banner_the-boy-who-woke-the-stars.jpg" alt="Story Cover Image">
+        </div>
+
+        <div class="controls-panel">
+            <div class="audio-controls" style="display: none;">
+                <div class="audio-controls-label">Listen</div>
+                <button class="audio-btn" id="audio-toggle" aria-label="Play/Pause audio">▶</button>
+            </div>
+            <div class="controls-divider"></div>
+            <div class="font-controls-panel">
+                <div class="font-controls-label">Adjust Text Size</div>
+                <div class="font-buttons-row">
+                    <button class="font-btn" id="font-small">S</button>
+                    <button class="font-btn" id="font-medium">M</button>
+                    <button class="font-btn" id="font-large">L</button>
+                </div>
+            </div>
+        </div>
+
+
+        <p>A very long time ago, before the sky learned how to shimmer and sparkle, the nights were whole and unbroken.
+        </p>
+
+        <p>Each night, after the Sun had set beyond the horizon, darkness covered the Earth like a deep ocean. The only
+            source of light in the sky was the Moon. It drifted overhead – pale, patient, and alone. </p>
+
+        <p>The Moon gave what light it could, pouring silver across rooftops, rivers, and sleeping faces. It never
+            failed its post. </p>
+
+        <p>But the Moons light was borrowed. It reflected what it was given by the Sun. Its light fell upon the world
+            thin and narrow, like a single thought in a stubborn mind. When the Moon turned its face away, or stayed
+            below the horizon, the sky gave only darkness. </p>
+
+        <p>The world did not know these details. The people simply said, "See? We have moonlight. This is how it is. "
+        </p>
+
+        <p>And so, the night sky remained singular. </p>
+
+        <p>In a small town beneath that solitary glow, there lived a child who was different from the other kids they
+            knew. They had a softness in their heart where others were hard, a tenderness that leaned in unexpected
+            directions. Their difference was small in the measure of the cosmos. </p>
+
+        <div class="special-line">
+            <p style="margin-bottom: 0px;"><em>But the other kids noticed.</em></p>
+        </div>
+
+        <p>They sensed it the way some animals sense bad weather. Children have a way of detecting the faintest oddity
+            about a person and calling attention to it. They circled like restless birds. They laughed at what they
+            could not name. They feared what they did not understand. And because they did not understand, they decided
+            the kid must be wrong. </p>
+
+        <p>The child did not know what made them different. They only knew that when they laughed, it sounded wrong to
+            others. When they loved, others ridiculed them and said their love was wrong. No one could fully explain why
+            they were wrong. The people, young and old alike, tormented this child with their teasing, mocking, and
+            sometimes outright cruelty </p>
+
+        <p>This brought great harm to the child, and so they learned. </p>
+
+        <p>They studied the other kids closely. They memorized their jokes and practiced their posture. They altered
+            their voice and trimmed their words before speaking. They dressed in clothing they disliked.
+            They borrowed the mannerisms of the others like the Moon borrowed light, reflecting what was handed to them,
+            until they were polished smooth, pale, and acceptable. </p>
+
+        <p>They became very good at it. </p>
+
+        <p>The other children noticed. They stopped laughing. The teasing thinned. The torment faded. The world,
+            satisfied with this, turned its gaze elsewhere. </p>
+
+        <p> "See, " they said. "Just a normal child after all. " </p>
+
+        <p>But the child felt something falter inside their chest. There had always been a warmth there– a glow that did
+            not come from outside. They had felt it ever since they were very young. It was a warm pulse beneath their
+            ribs, like a tiny sunrise trying to happen. </p>
+
+        <p>Every time they swallowed the truth, that light dimmed. Each time they nodded at a lie, the warmth faded.
+            Whenever they pretended to be other than they were, their inner glow flickered, threatening to go out
+            completely. </p>
+
+        <p>One night, when the Moon had not yet risen, the child lay awake, pressing their palm against their chest.
+            They could no longer feel the warmth inside. </p>
+
+        <p>Instead, they felt only silence and darkness, mirroring the world outside when the Moon's light was not
+            overhead. </p>
+
+        <p>For the first time, they realized that the darkness outside was not unlike the darkness that people carried
+            within themselves. People were afraid. </p>
+
+        <p>Afraid of what was unfamiliar. </p>
+
+        <p>Afraid of colors they had not yet learned to name. </p>
+
+        <div class="special-line">
+            <p style="margin-bottom: 0px;"><em>Afraid of light that did not come from where they expected.</em></p>
+        </div>
+
+        <p>They thought of the sky, vast and empty except for that lonely moon. At night, all light came from one place,
+            one direction. One approved shape. No wonder people feared anything else. </p>
+
+        <p> "What if, " they whispered into the dark, "the night had more lights? " </p>
+
+        <p>They imagined many points of brightness scattered across the sky, each one shining separately, from its own
+            direction. No single light dominating. No single way of being illuminated. </p>
+
+        <p>The child felt something inside of them shift. They could feel their chest warming, their glow growing
+            brighter. </p>
+
+        <div class="special-line">
+            <p style="margin-bottom: 0px;"><em>They stopped pretending the very next morning.</em></p>
+        </div>
+
+        <p>It was not dramatic. There were no speeches. They simply ceased bending toward the expectations of others.
+        </p>
+
+        <p>When the other kids gathered to tell their crude jokes, they did not force a laugh. When the others spoke of
+            future wants and desires, they did not pretend to share those dreams. When cruel kids mocked someone new for
+            being different, the child walked away and befriended the newcomer, glowing softly from within. </p>
+
+        <p>The teasing returned, sharper this time. The cruelty intensified. </p>
+
+        <p>"What happened to you?" one boy asked. "You were almost one of us." </p>
+
+        <p>The child looked at them, really looked at them, and saw not enemies but frightened children who had been
+            taught that there was only one right way to be. Only one approved kind of light. </p>
+
+        <p> "I am tired of borrowing light, " they said quietly. "I have my own. " </p>
+
+        <p>The boy did not understand. He could not understand. The others redoubled their efforts to extinguish the
+            child's glow, to bring them back into the familiar darkness where everyone looked the same. </p>
+
+        <p>But the child's light only grew stronger. Each time the world tried to dim them, they shined brighter. Each
+            time others tried to make them feel small, they expanded. Each time other people, young and old alike, tried
+            to force the child back into their shape, this child became more distinctly their own self. </p>
+
+        <p>The child's inner glow, no longer smothered, grew fierce. It poured through their skin. It gathered in their
+            eyes. It trembled in their voice. </p>
+
+        <p>People shielded their faces when the child walked by, not because they were burned, but because the child
+            revealed them. </p>
+
+        <p>Though the child had newfound confidence, they were still afraid of being harmed because they were different.
+        </p>
+
+        <div class="special-line">
+            <p style="margin-bottom: 0px;"><em>
+                    Courage is not the absence of fear.
+                </em></p>
+        </div>
+
+        <div class="special-line">
+            <p style="margin-top: 0px;"><em>
+                    It is choosing not to extinguish yourself because of it.
+                </em></p>
+        </div>
+
+        <p>The next night, the child climbed to the top of the highest hill. The world below was inky black. The Moon
+            hung low, luminous and solitary. </p>
+
+        <p> "Why do you shine alone? " the child asked softly. </p>
+
+        <p>The Moon regarded them. </p>
+
+        <p> "I do not shine, " it said after a long silence. "I reflect. It is my duty. " </p>
+
+        <p>The child frowned. "Does it make you happy? " </p>
+
+        <p>The Moon's light trembled almost imperceptibly. "It keeps the dark away, " it said. "The world relies on me.
+            " </p>
+
+        <p> "But aren't you lonely? " the child asked. "What if there were other lights up there, to keep you company? "
+        </p>
+
+        <p>The Moon did not answer at once. </p>
+
+        <p> "I didn't choose to be alone, " the Moon whispered. "I didn't choose the light I reflect. But I do what I
+            can. I fear that if there were more lights, I would no longer be needed. " </p>
+
+        <p>The child understood that fear. They had lived it. </p>
+
+        <p>"I tried to be like everyone else," they said. "I thought if I reflected them well enough,
+            I would stop hurting." </p>
+
+        <p>"And did you?" asked the Moon. </p>
+
+        <p>"No," they said. "It only made me smaller." </p>
+
+        <p>Silence stretched between them, vast and honest. </p>
+
+        <p>"What if," the child said carefully, "there were other lights? Not just one or two. But
+            many. And not to replace you. Not to outshine you. But to share the sky with you." </p>
+
+        <p>The Moon dimmed slightly, thinking. </p>
+
+        <p>"The world is afraid of what shines differently," it said. </p>
+
+        <p>"So was I," the child replied. </p>
+
+        <p>"And what did you do?" </p>
+
+        <p>They drew a steady breath. </p>
+
+        <div class="special-line">
+            <p style="margin-bottom: 0px;"><em>
+                    “I stopped hiding.”
+                </em></p>
+        </div>
+
+        <p>They closed their eyes, letting every part of their being exist at once, bright, tender, and unashamed. The
+            light within them flared. It rose from their chest like a breath they had been holding their entire life. It
+            spilled upward, past treetops, past clouds, into the great waiting sky. </p>
+
+        <p>The universe noticed. </p>
+        <p>It had been watching all along, as universes do, curious about small, stubborn flames that refuse to die. It
+            peered into the child's heart and found no hunger for dominance. No wish to erase what came before. Only a
+            longing for others to see from more than one direction. To live without shrinking. </p>
+
+        <p>To wake up and understand. </p>
+
+        <p>The universe is vast and ancient, but it is not unkind. It took the light the child offered and did not keep
+            it. </p>
+
+        <p>Instead, it scattered the light across the sky. Pinpricks became lanterns. Lanterns became constellations.
+            Light bloomed in every direction. Each star burned with the same essence, fundamentally alike, yet each
+            distinct in position and brightness. They shined from every direction, so no one could claim light belonged
+            to only one source. </p>
+
+        <p>In the village below, people stumbled from their homes. They stared upward; faces washed in new radiance.
+            Shadows no longer fell in a single direction; they crossed and softened. Corners once hidden revealed their
+            shape. </p>
+
+        <p>And the Moon? As it rose above the horizon, it looked around at the countless new lights in the sky, and for
+            the first time, no longer felt alone. </p>
+
+        <p>On the hill, the child fell to their knees, breathless. </p>
+
+        <p>They had not meant to remake the heavens. </p>
+
+        <p>They had only meant to remain themselves. </p>
+
+        <p>But sometimes that is enough. </p>
+
+        <p>The world was transformed after that night. The sky was no longer a dark expanse lit by a lone, borrowed
+            glow; it had become a canvas of infinite variety. Each star glowed according to its own nature, contributing
+            its unique spark to the beauty of the whole. The Moon continued its dance across the heavens against a
+            backdrop of a thousand twinkling lights, no longer alone. </p>
+
+        <p>The child grew into an adult who continued to shine their light without apology or compromise. Others, seeing
+            their courage, began to find their own light within themselves. Some glowed brightly, some softly, some in
+            colors never before seen. But all were beautiful. All were necessary. </p>
+
+        <p>The darkness never completely disappeared. There were still those who preferred the old way, the single
+            light, the familiar shapes. But they were no longer the only voice. The night sky itself testified that
+            there were infinite ways to be, infinite ways to love, infinite ways to shine. </p>
+
+        <p>When a child feels different or alone, they need only look up at the night sky to remember: every star they
+            see shines because someone chose to share their own inner glow, making it safer for others to do the same.
+        </p>
+
+        <p><strong>Darkness is not defeated by sameness.</strong></p>
+
+        <p><strong>It is transformed by many brave lights shining at once.</strong></p>
+
+        <div class="final-line">And that is how a child woke the stars. ✨🖖</div>
+
+
+        <p>Copyright 2026 Kevyn Patrick Malpass. All Rights Reserved. </p>
+
+
+
+    </div>
+
+    <script>
+        //let currentFontSize = 1.1; // Base font size for paragraphs
+
+        const fontSmallBtn = document.getElementById('font-small');
+        const fontMediumBtn = document.getElementById('font-medium');
+        const fontLargeBtn = document.getElementById('font-large');
+        const audioToggleBtn = document.getElementById('audio-toggle');
+        const container = document.querySelector('.container');
+
+        // Get all text elements that should be affected by font size changes
+        function getTextElements() {
+            return container.querySelectorAll('p, .special-line, .final-line');
+        }
+
+        // function updateFontSize() {
+        //     console.log("updateFontSize - " + currentFontSize);
+        //     const textElements = getTextElements();
+        //     textElements.forEach(element => {
+        //         element.classList.remove('small-font', 'medium-font', 'large-font');
+        //         if (currentFontSize < 1.1) {
+        //             element.classList.add('small-font');
+        //             console.log("go small");
+        //         } else if (currentFontSize > 1.1) {
+        //             element.classList.add('large-font');
+        //             console.log("go large");
+        //         } else {
+        //             element.classList.add('medium-font');
+        //             console.log("go medium");
+        //         }
+        //     });
+
+        //     // Save preference to localStorage
+        //     localStorage.setItem('storyFontSize', currentFontSize);
+        // }
+
+        // Load saved font size preference
+        const savedFontSize = localStorage.getItem('storyFontSize');
+        if (savedFontSize) {
+            //currentFontSize = parseFloat(savedFontSize);
+            //updateFontSize();
+            if (savedFontSize === 'S') {
+                goSmall();
+            } else if (savedFontSize === 'M') {
+                goMedium();
+            } else if (savedFontSize === 'L') {
+                goLarge();
+            }
+        }
+
+        // fontIncreaseBtn.addEventListener('click', () => {
+        //     console.log("increase button - " + currentFontSize);
+        //     if (currentFontSize < 2.0) { // Maximum font size limit
+        //         currentFontSize += 0.1;
+        //         updateFontSize();
+        //     }
+        // });
+
+        // fontDecreaseBtn.addEventListener('click', () => {
+        //     console.log("decrease button - " + currentFontSize);
+        //     if (currentFontSize > 0.8) { // Minimum font size limit
+        //         currentFontSize -= 0.1;
+        //         updateFontSize();
+        //     }
+        // });
+
+        function goSmall() {
+            const textElements = getTextElements();
+            textElements.forEach(element => {
+                element.classList.remove('small-font', 'medium-font', 'large-font');
+                element.classList.add('small-font');
+            });
+
+            // Save preference to localStorage
+            localStorage.setItem('storyFontSize', 'S');
+        }
+
+        function goMedium() {
+            const textElements = getTextElements();
+            textElements.forEach(element => {
+                element.classList.remove('small-font', 'medium-font', 'large-font');
+                element.classList.add('medium-font');
+            });
+
+            // Save preference to localStorage
+            localStorage.setItem('storyFontSize', 'M');
+        }
+
+        function goLarge() {
+            const textElements = getTextElements();
+            textElements.forEach(element => {
+                element.classList.remove('small-font', 'medium-font', 'large-font');
+                element.classList.add('large-font');
+            });
+
+            // Save preference to localStorage
+            localStorage.setItem('storyFontSize', 'L');
+        }
+
+        fontSmallBtn.addEventListener('click', () => {
+            goSmall();
+        });
+
+        fontMediumBtn.addEventListener('click', () => {
+            goMedium();
+        });
+
+        fontLargeBtn.addEventListener('click', () => {
+            goLarge();
+        });
+
+        // Audio functionality
+        let audio = new Audio('tbwwts.mp3');
+        let isPlaying = false;
+
+        audioToggleBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                audioToggleBtn.textContent = '▶';
+                audioToggleBtn.classList.remove('playing');
+                isPlaying = false;
+            } else {
+                audio.play();
+                audioToggleBtn.textContent = '❚❚';
+                audioToggleBtn.classList.add('playing');
+                isPlaying = true;
+            }
+        });
+
+        // Handle audio end
+        audio.addEventListener('ended', () => {
+            audioToggleBtn.textContent = '▶';
+            audioToggleBtn.classList.remove('playing');
+            isPlaying = false;
+        });
+
+        // // Add keyboard support
+        // document.addEventListener('keydown', (e) => {
+        //     if (e.ctrlKey || e.metaKey) {
+        //         if (e.key === '+' || e.key === '=') {
+        //             e.preventDefault();
+        //             fontIncreaseBtn.click();
+        //         } else if (e.key === '-') {
+        //             e.preventDefault();
+        //             fontDecreaseBtn.click();
+        //         }
+        //     }
+        // });
+    </script>
+</body>
+
+</html>
